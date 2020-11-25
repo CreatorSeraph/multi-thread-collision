@@ -57,7 +57,7 @@ bool cRenderer::Init(HWND _hWnd)
 
 bool cRenderer::Begin()
 {
-    m_device->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL, D3DCOLOR_XRGB(0, 255, 0), 1.0f, 0);
+    m_device->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL, D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
 
     if (FAILED(m_device->BeginScene()))
         return false;
