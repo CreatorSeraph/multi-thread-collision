@@ -1,5 +1,8 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include "cRenderer.h"
+
+cRenderer g_renderer;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 ATOM MyRegisterClass(HINSTANCE hInstance);
@@ -24,6 +27,9 @@ int APIENTRY wWinMain(
     ShowWindow(hWnd, nShowCmd);
     UpdateWindow(hWnd);
 
+    if (!g_renderer.Init(hWnd))
+        return false;
+
     MSG msg;
     ZeroMemory(&msg, sizeof(MSG));
 
@@ -39,7 +45,10 @@ int APIENTRY wWinMain(
         }
         else
         {
-
+            if (!g_renderer.Begin())
+                continue;//todo
+            if (!g_renderer.End())
+                continue;//todo
         }
     }
 
